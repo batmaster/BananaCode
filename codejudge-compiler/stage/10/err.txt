@@ -1,0 +1,4 @@
+Solution.java:6: ')' expected
+        System.out.println(Integer.parseInt(s.nextLine()) + Integer.parseInt(s.nextLine());
+                                                                                          ^
+1 error

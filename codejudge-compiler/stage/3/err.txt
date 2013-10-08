@@ -1,0 +1,11 @@
+Solution.java:3: cannot find symbol
+symbol  : class Scanner
+location: class Solution
+        Scanner s = new Scanner(System.in);
+        ^
+Solution.java:3: cannot find symbol
+symbol  : class Scanner
+location: class Solution
+        Scanner s = new Scanner(System.in);
+                        ^
+2 errors
