@@ -2,7 +2,7 @@
 	include('../functions.php');
 	connectdb();
 	date_default_timezone_set('UTC');
-	if(isset($_POST['action'])){
+	if(isset($_POST['action'])) {
 		if($_POST['action']=='email') {
 			// update the admin email
 			if(trim($_POST['email']) == "")
@@ -70,10 +70,11 @@
 			if(trim($_POST['title']) == "" or trim($_POST['problem']) == "" or !is_numeric($_POST['time']))
 				header("Location: problems.php?derror=1&action=edit&id=".$_POST['id']);
 			else {
-				$query = "UPDATE problems SET name='".mysql_real_escape_string($_POST['title'])."', text='".mysql_real_escape_string($_POST['problem'])."', time='".$_POST['time']."' WHERE sl='".$_POST['id']."'";
+				$txt =  str_replace('\n', "<br>", mysql_real_escape_string($_POST['problem']));
+				$query = "UPDATE problems SET name='".mysql_real_escape_string($_POST['title'])."', text='".$txt ."', time='".$_POST['time']."' WHERE sl='".$_POST['id']."'";
 				mysql_query($query);
 				
-				$query = "DELETE FROM testcase WHERE sl=`" .$_POST['id'] ."`";
+				$query = "DELETE FROM testcase WHERE sl='" .$_POST['id'] ."'";
 				mysql_query($query);
 				
 				for ($i = 0; $i <= $_POST['total-testcase-edit']; $i++) {
@@ -95,13 +96,13 @@
 			fclose($fp);
 			header("Location: scoring.php?updated=1");
 		}
-	}
-	else if(isset($_POST['action'])){
-		if($_POST['action']=='delete' and is_numeric($_POST['id'])) {
+		else if($_POST['action']=='delete' and is_numeric($_POST['id'])) {
 			// delete an existing problem
 			$query="DELETE FROM problems WHERE sl=".$_POST['id'];
+			echo $query;
 			mysql_query($query);
 			$query="DELETE FROM solve WHERE problem_id=".$_POST['id'];
+			echo $query;
 			mysql_query($query);
 			header("Location: problems.php?deleted=1");
 		} else if($_POST['action']=='ban') {

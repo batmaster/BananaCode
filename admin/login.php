@@ -58,29 +58,42 @@ body {
 
 <body>
 <div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">Codejudge</a> </div>
-  </div>
+	<div class="navbar-inner">
+		<div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">Codejudge</a> </div>
+	</div>
 </div>
+
+
 <div class="container">
-  <?php
+	<?php
         if(isset($_GET['logout']))
-          echo("<div class=\"alert alert-info\">\nYou have logged out successfully!\n</div>");
+          echo("<div class=\"alert alert-info\"><a class=\"close\" data-dismiss=\"alert\" href=\"#\">×</a>\nYou have logged out successfully!\n</div>");
         else if(isset($_GET['error']))
-          echo("<div class=\"alert alert-error\">\nIncorrect Password!\n</div>");
+          echo("<div class=\"alert alert-error\"><a class=\"close\" data-dismiss=\"alert\" href=\"#\">×</a>\nIncorrect Password!\n</div>");
         else if(isset($_GET['derror']))
-          echo("<div class=\"alert alert-error\">\nPlease enter all the details asked before you can continue!\n</div>");
+          echo("<div class=\"alert alert-error\"><a class=\"close\" data-dismiss=\"alert\" href=\"#\">×</a>\nPlease enter all the details asked before you can continue!\n</div>");
       ?>
-  <h1><small>Login</small></h1>
-  <p>Please login to use the admin panel.</p>
-  <br/>
-  <form method="post" action="login.php">
-    Password:
-    <input type="password" name="password"/>
-    <br/>
-    <br/>
-    <input class="btn" type="submit" name="submit" value="Login"/>
-  </form>
+	<div class="well well-large" align="center">
+		<h1><small>Login</small></h1>
+		<p>Please login to use the admin panel.</p>
+		<br/>
+		<form method="post" action="login.php">
+			<div class="control-group">
+				<label class="control-label" for="inputIcon">Password</label>
+				<div class="controls">
+					<div class="input-prepend">
+						<span class="add-on">
+							<i class="icon-envelope"></i>
+						</span>
+						<input type="password" name="password"/>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<br/>
+			<input class="btn" type="submit" name="submit" value="Login"/>
+		</form>
+	</div>
 </div>
 <!-- /container -->
 
