@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/bananacode/codejudge-compiler/stage/18/compile.sh: line 2: gcc: command not found
