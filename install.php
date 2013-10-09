@@ -41,6 +41,7 @@
   `text` text NOT NULL,
   `time` int(11) NOT NULL DEFAULT '3000',
   `points` int(11) NOT NULL,
+  `addtime` bigint(20) NOT NULL,
   PRIMARY KEY (`sl`)
 )");
 		  // create the solve table

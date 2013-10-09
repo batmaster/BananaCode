@@ -2,7 +2,7 @@
 	include('../functions.php');
 	connectdb();
 	date_default_timezone_set('UTC');
-	if(isset($_POST['action'])) {
+	
 		if($_POST['action']=='email') {
 			// update the admin email
 			if(trim($_POST['email']) == "")
@@ -50,7 +50,7 @@
 				header("Location: problems.php?derror=1");
 			else {
 				$txt =  str_replace('\n', "<br>", mysql_real_escape_string($_POST['problem']));
-				$query="INSERT INTO `problems` ( `name` , `text`, `time`, `points`) VALUES ('".mysql_real_escape_string($_POST['title'])."', '".$txt ."', '".$_POST['time']."', '" .$_POST['points'] ."')";
+				$query="INSERT INTO `problems` ( `name` , `text`, `time`, `points`, `addtime`) VALUES ('".mysql_real_escape_string($_POST['title'])."', '".$txt ."', '".$_POST['time']."', '" .$_POST['points']."', '" .time() ."')";
 				mysql_query($query);
 				
 				for ($i = 0; $i <= $_POST['total-testcase-new']; $i++) {
@@ -96,25 +96,24 @@
 			fclose($fp);
 			header("Location: scoring.php?updated=1");
 		}
-		else if($_POST['action']=='delete' and is_numeric($_POST['id'])) {
+		else if($_GET['action']=='delete' and is_numeric($_GET['id'])) {
 			// delete an existing problem
-			$query="DELETE FROM problems WHERE sl=".$_POST['id'];
-			echo $query;
+			$query="DELETE FROM problems WHERE sl=".$_GET['id'];
 			mysql_query($query);
-			$query="DELETE FROM solve WHERE problem_id=".$_POST['id'];
-			echo $query;
+			$query="DELETE FROM solve WHERE problem_id=".$_GET['id'];
+			mysql_query($query);
+			$query="DELETE FROM testcase WHERE sl=".$_GET['id'];
 			mysql_query($query);
 			header("Location: problems.php?deleted=1");
-		} else if($_POST['action']=='ban') {
+		} else if($_GET['action']=='ban') {
 			// ban a user from the event
-			$query="UPDATE users SET status=0 WHERE username='".mysql_real_escape_string($_POST['username'])."'";
+			$query="UPDATE users SET status=0 WHERE username='".mysql_real_escape_string($_GET['username'])."'";
 			mysql_query($query);
 			header("Location: users.php?banned=1");
-		} else if($_POST['action']=='unban') {
+		} else if($_GET['action']=='unban') {
 			// unban a user from the event
-			$query="UPDATE users SET status=1 WHERE username='".mysql_real_escape_string($_POST['username'])."'";
+			$query="UPDATE users SET status=1 WHERE username='".mysql_real_escape_string($_GET['username'])."'";
 			mysql_query($query);
 			header("Location: users.php?unbanned=1");
 		}
-	}
 ?>

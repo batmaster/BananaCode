@@ -11,6 +11,7 @@
 				<li class="active"><a id="Clock"></a><li>
               <li><a href="index.php">Admin Panel</a></li>
               <li class="active"><a href="#about">Users</a></li>
+			   <li><a href="preferences.php">Preferences</a></li>
               <li><a href="logout.php">Logout</a></li>
             </ul>
           </div><!--/.nav-collapse -->
