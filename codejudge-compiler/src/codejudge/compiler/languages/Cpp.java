@@ -63,7 +63,7 @@ public class Cpp extends Language {
 			Process p = r.exec("chmod +x " + dir + "/run.sh");
 			p.waitFor();
 			p = r.exec(dir + "/run.sh"); // execute the script
-			TimedShell shell = new TimedShell(this, p, 3000);
+			TimedShell shell = new TimedShell(this, p, timeout);
 			shell.start();
 			p.waitFor();
 		} catch (FileNotFoundException e) {

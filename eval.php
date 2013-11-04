@@ -105,12 +105,10 @@
 					header("Location: solve.php?serror=1&id=".$_POST['id']); // compiler server not running
 				
 			} // end loop
-			if (!strpos($grader, '-') && $isGraded) {
 			
 			//if (!strpos($grader, '-') && $isGraded) {
 				$query = "UPDATE `solve` SET `grader`='" .$grader ."' WHERE (`username`='".$_SESSION['username']."' AND `problem_id`='".$_POST['id']."')";
 				mysql_query($query);
-			}
 			//}
 			if ($isGraded) {
 				header("Location: solve.php?id=" .$_POST['id'] ."&success=" .$grader);

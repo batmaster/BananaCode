@@ -41,8 +41,6 @@ public class C extends Language {
 			Process p = r.exec("chmod +x " + dir + "/compile.sh");
 			p.waitFor();
 			p = r.exec(dir + "/compile.sh"); // execute the compiler script
-			TimedShell shell = new TimedShell(this, p, timeout);
-			shell.start();
 			p.waitFor();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

@@ -23,6 +23,7 @@ import codejudge.compiler.languages.Cpp;
 import codejudge.compiler.languages.Java;
 import codejudge.compiler.languages.Language;
 import codejudge.compiler.languages.Python;
+import codejudge.compiler.languages.Ruby;
 
 public class RequestThread extends Thread {
 	
@@ -62,6 +63,8 @@ public class RequestThread extends Thread {
 				l = new Java(file, timeout, contents, dir.getAbsolutePath());
 			else if(lang.equals("python"))
 				l = new Python(file, timeout, contents, dir.getAbsolutePath());
+			else if(lang.equals("ruby"))
+				l = new Ruby(file, timeout, contents, dir.getAbsolutePath());
 			l.compile(); // compile the file
 			String errors = compileErrors();
 			if(!errors.equals("")) { // check for compilation errors
