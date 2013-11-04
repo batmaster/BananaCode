@@ -14,6 +14,7 @@
 <li><a href="scoreboard.php">Scoreboard</a></li>
 <li><a href="account.php">Account</a></li>
 <li><a href="logout.php">Logout</a></li>
+<li class="active" style="float:right"><a id="Username"><?php echo $_SESSION['username'] .getScore(); ?></a>
 </ul>
 </div>
 <!--/.nav-collapse -->
@@ -33,6 +34,7 @@
         echo"<li class=\"nav-header\">AVAILABLE PROBLEMS</li>";
         	// list all the problems from the database
         	$query = "SELECT * FROM problems ORDER BY addtime DESC";
+        	$query = "SELECT * FROM problems ORDER BY addtime"; // DESC
           	$result = mysql_query($query);
           	if(mysql_num_rows($result)==0)
 			echo("<li>None</li>\n"); // no problems are there

@@ -44,6 +44,7 @@
 				<?php
             	  // list all the problems
             	  $query = "SELECT * FROM problems";
+            	  $query = "SELECT * FROM problems ORDER BY addtime";
           	  $result = mysql_query($query);
           	  if(mysql_num_rows($result)==0)
           	    echo("<li>None</li>\n");

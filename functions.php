@@ -41,3 +41,10 @@ function treat($text) {
 	$s1 = str_replace("\n\r", "\n", $text);
 	return str_replace("\r", "", $s1);
 }
+
+function getScore() {
+	$query = "SELECT sum(`score`) FROM `solve` WHERE `username`='" .$_SESSION['username'] ."'";
+	$res = mysql_query($query);
+	return mysql_fetch_row($res)[0];
+}
+

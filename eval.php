@@ -32,6 +32,7 @@
 			    case 'cpp': $ext='cpp'; break;
 			    case 'java': $ext='java'; break;
 			    case 'python': $ext='py'; break;
+				 case 'ruby': $ext='rb'; break;
 			}
 			// connect to the java compiler server to compile the file and fetch the results
 			$query = "SELECT `sl` FROM `testcase` WHERE `sl`='".$_POST['id']."'";
@@ -105,9 +106,12 @@
 				
 			} // end loop
 			if (!strpos($grader, '-') && $isGraded) {
+			
+			//if (!strpos($grader, '-') && $isGraded) {
 				$query = "UPDATE `solve` SET `grader`='" .$grader ."' WHERE (`username`='".$_SESSION['username']."' AND `problem_id`='".$_POST['id']."')";
 				mysql_query($query);
 			}
+			//}
 			if ($isGraded) {
 				header("Location: solve.php?id=" .$_POST['id'] ."&success=" .$grader);
 			}

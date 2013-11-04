@@ -95,6 +95,7 @@
           else if($fields['lang']=='cpp') echo('C++');
           else if($fields['lang']=='java') echo('Java');
           else if($fields['lang']=='python') echo('Python');
+		   else if($fields['lang']=='ruby') echo('Ruby');
         ?>
 			<span class="caret"></span></a>
 			<ul class="dropdown-menu">
@@ -102,6 +103,7 @@
 				<li><a href="#" onclick="changeLang('C++');changeSyntax('C++');">C++</a></li>
 				<li><a href="#" onclick="changeLang('Java');changeSyntax('Java');">Java</a></li>
 				<li><a href="#" onclick="changeLang('Python');changeSyntax('Python');">Python</a></li>
+				<li><a href="#" onclick="changeLang('Ruby');changeSyntax('Ruby');">Ruby</a></li>
 			</ul>
 		</div>
 		<br/>
@@ -117,6 +119,7 @@
         if($accept['cpp'] == 1) $txt = $txt."C++, ";
         if($accept['java'] == 1) $txt = $txt."Java, ";
         if($accept['python'] == 1) $txt = $txt."Python, ";
+		 if($accept['ruby'] == 1) $txt = $txt."Ruby, ";
         $final = substr($txt, 0, strlen($txt) - 2);
         echo($final."</span>\n");
       ?>
@@ -139,6 +142,8 @@
           $('#hlang').val('java');
         else if(lang== 'Python')
           $('#hlang').val('python');
+		 else if(lang== 'Ruby')
+          $('#hlang').val('ruby');
       }
     </script> 
 <script src="js/codemirror.js"></script> 
@@ -163,6 +168,8 @@
 	  editor.setOption("mode", "text/x-java");
 	else if(lang=='Python')
 	  editor.setOption("mode", "text/x-python");
+	else if(lang=='Ruby')
+	  editor.setOption("mode", "text/x-ruby");
       }
       var num="<?php echo $num;?>";
       var lang="<?php echo $fields['lang'];?>";
@@ -171,6 +178,7 @@
       else if(lang=='cpp') changeSyntax('C++');
       else if(lang=='java') changeSyntax('Java');
       else if(lang=='python') changeSyntax('Python');
+	  else if(lang=='ruby') changeSyntax('Ruby');
     </script>
 <?php
 	include('footer.php');
